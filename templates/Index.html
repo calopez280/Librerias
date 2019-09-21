@@ -19,7 +19,7 @@
 </br>
 <form action="/Agregar_Libro" method="POST">
         <label for="exampleInputEmail1">Titulo</label>
-        <input type="text" class="form-control" name="titulo">
+        <input type="text" class="form-control" name="titulo" placeholder="Titulo">
         <input type="text" name="iSSN" placeholder="ISSN">
         <input type="text" name="autor" placeholder="Autor">
         <button type="submit">Agregar</button>
@@ -27,16 +27,19 @@
 
 
 
-<table>
+<table class="table table-striped">
         <thead>
-                <tr>Titulo</tr>
-                <tr>ISSN</tr>
-                <tr>Autor</tr>
+                <tr>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">ISSN</th>
+                        <th scope="col">Autor</th>
+                </tr>
         </thead>
         <tbody>
+
                 {% for libro in libros %}
                 <tr>
-                        <td>{{libro.1}}</td>
+                        <th scope="row">{{libro.1}}</th>
                         <td>{{libro.2}}</td>
                         <td>{{libro.3}}</td>
                         <td>
