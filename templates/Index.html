@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{%if messages %}
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="alert-heading">Well done!</h4>
+        <p>{{message}}</p>
+</div>
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+</br>
+<form action="/Agregar_Libro" method="POST">
+        <label for="exampleInputEmail1">Titulo</label>
+        <input type="text" class="form-control" name="titulo">
+        <input type="text" name="iSSN" placeholder="ISSN">
+        <input type="text" name="autor" placeholder="Autor">
+        <button type="submit">Agregar</button>
+</form>
+
+
+
+<table>
+        <thead>
+                <tr>Titulo</tr>
+                <tr>ISSN</tr>
+                <tr>Autor</tr>
+        </thead>
+        <tbody>
+                {% for libro in libros %}
+                <tr>
+                        <td>{{libro.1}}</td>
+                        <td>{{libro.2}}</td>
+                        <td>{{libro.3}}</td>
+                        <td>
+                                <a href="/Editar_Libro/{{libro.0}}">Editar</a>
+                                <a href="/Eliminar_Libro/{{libro.0}}">Eliminar</a>
+                        </td>
+                </tr>
+                {% endfor %}
+        </tbody>
+</table>
+
+{% endblock %}

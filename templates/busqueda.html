@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block body %}
+<br>
+<form action="/Buscar" method="POST">
+    <input type="text" name="busqueda" placeholder="Busqueda">
+    <button type="submit">Buscar</button>
+</form>
+
+<table>
+    <thead>
+        <tr>Titulo</tr>
+        <tr>ISSN</tr>
+        <tr>Autor</tr>
+    </thead>
+    <tbody>
+        {% for libro in libros %}
+        <tr>
+            <td>{{libro.1}}</td>
+            <td>{{libro.2}}</td>
+            <td>{{libro.3}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
