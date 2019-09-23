@@ -2,20 +2,29 @@
 {% block body %}
 <br>
 <form action="/Buscar" method="POST">
-    <input type="text" name="busqueda" placeholder="Busqueda">
-    <button type="submit">Buscar</button>
+    <div class="row">
+        <div class="col">
+            <label for=exampleInputEmail1>Busqueda</label>
+            <input type="text" class="form-control" name="busqueda" placeholder="Busqueda">
+        </div>
+
+    </div>
+    <br>
+    <button type="submit" class="btn btn-outline-success">Buscar</button>
 </form>
 
-<table>
+<table class="table table-striped">
     <thead>
-        <tr>Titulo</tr>
-        <tr>ISSN</tr>
-        <tr>Autor</tr>
+        <tr>
+            <th scope="col">Titulo</th>
+            <th scope="col">ISSN</th>
+            <th scope="col">Autor</th>
+        </tr>
     </thead>
     <tbody>
         {% for libro in libros %}
         <tr>
-            <td>{{libro.1}}</td>
+            <th scope="row">{{libro.1}}</td>
             <td>{{libro.2}}</td>
             <td>{{libro.3}}</td>
         </tr>

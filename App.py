@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+#from flask_login import LoginManager, login_user,logout_user,login_required,current_user
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
@@ -10,6 +11,8 @@ mysql = MySQL(app)
 
 # settings
 app.secret_key = 'mysecretkey'
+
+#Buscando hacer roles
 
 @app.route('/')
 def Index():
@@ -75,7 +78,7 @@ def Buscar():
     if request.method == 'POST':
         busqueda = request.form['busqueda']
         cur = mysql.connection.cursor()
-        cur.execute("SELECT * FROM libros WHERE titulo = %(busca)s", {'busca':busqueda})
+        cur.execute("SELECT * FROM libros WHERE titulo = %(busca)s OR autor = %(busca)s", {'busca':busqueda})
         data = cur.fetchall()
         print(data)
         return render_template('busqueda.html', libros = data)
